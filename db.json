@@ -1,0 +1,39 @@
+{
+    "entries": [
+      {
+        "id": 1,
+        "SKU": "rscnii56000",
+        "title": "Epic React Flyknit 2 Damen Laufschuh",
+        "description":"The Nike Epic React Flyknit 2 takes a step up from its predecessor with smooth, lightweight performance and a bold look. An updated Flyknit upper conforms to your foot with a minimal, supportive design. Underfoot, durable Nike React technology defies the odds by being both soft and responsive, for comfort that lasts as long as you can run.", "image":"https://images.ctfassets.net/8z8q5e3hulgg/6RLxXMz73qY7EKbmH1k23E/dbd7c75f56e668f1d3d5f022a170a76c/rscnii56000-front.jpeg"
+      },
+      {
+        "id": 2,
+        "SKU": "rscnii56001",
+        "title": "Shoe 2 - Example 2",
+        "description":"Shoe 2 is pretty cool...", 
+        "image":"https://c.static-nike.com/a/images/t_PDP_1280_v1/f_auto/qjcbrmytzndifyzzetep/air-max-720-womens-shoe-5wHhqq.jpg"
+      },
+      {
+        "id": 3,
+        "SKU": "rscnii56002",
+        "title": "Shoe 3 - Example 3",
+        "description":"Shoe 3 is super functional...", 
+        "image":"https://c.static-nike.com/a/images/t_PDP_1280_v1/f_auto/m467jbrygmdj9v93zc9i/air-zoom-pegasus-35-premium-womens-running-shoe-8MAy2z.jpg"
+      },
+      {
+        "id": 4,
+        "SKU": "rscnii56003",
+        "title": "Shoe 4 - Example 4",
+        "description":"Shoe 4 is the high end model...", 
+        "image":"https://c.static-nike.com/a/images/t_PDP_1280_v1/f_auto/u4qka2hd1cm6l0a6qsr5/air-swoopes-2-floral-shoe-94tvgn.jpg"
+      }
+    ],
+    "users": [
+        {
+            "name": "user-001"
+        },
+        {
+            "name": "user-002"
+        }
+    ]
+  }

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" >
+    <title>External API UI Extension Sample</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css">
+    <script src="https://unpkg.com/contentful-ui-extensions-sdk@3"></script>
+  
+  	<style>
+        body {
+          overflow: auto;
+        }
+      
+      	select{
+      		margin: 0 0 15px 0;
+      	}
+      
+      	img {
+          margin: 15px auto 0;
+      	}
+    </style>
+</head>
+
+<body>
+    <div class="cf-form-field">
+      	<div class="cf-form-hint">
+            External Content from PIM System.
+        </div>
+        <select id="user-id" class="cf-form-input">
+        </select>
+	  		<textarea id="user-notes" class="cf-form-input" aria-disabled="true"></textarea>
+      	<img id="user-image" src="http://www.pngmart.com/files/4/Burberry-Logo-PNG-File.png" alt="Preview Image Here" width="150" height="100">
+    </div>
+
+    <script type="text/javascript">
+      	let option_descriptions = []
+        let option_images = []
+      
+        window.contentfulExtension.init(function (api) {
+            api.window.startAutoResizer()
+            var value = api.field.getValue()
+            var serviceUri = "https://my-json-server.typicode.com/jbodenhausen/demo-api-fashion/entries"
+        
+            
+            $.ajax({
+                url: serviceUri,
+                type: "GET",
+                crossDomain: true,
+                dataType: "json",
+                success: function (response) {
+                    response.forEach(function (value) {
+                      	console.log(value)
+                      
+                        var option = document.createElement("option")
+                        option.setAttribute("value", value.id)
+                        option.innerText = value.SKU + " - " + value.title
+
+                        $("#user-id").append(option)
+                      	option_descriptions.push(value.description)
+                      	option_images.push(value.image)
+                        console.log("Saving image" + value.image )
+                      
+                      
+                      	if( value.id === parseInt(api.field.getValue()) ){
+                          $("#user-notes").val("Existing Description: " + value.description)
+                          $("#user-image").attr("src", value.image)
+                        }
+                    })
+                    $("#user-id").val(api.field.getValue())
+                },
+                error: function (xhr, status) {
+                    console.log("Error fetching data. Status:", status)
+                }
+            })
+          
+            $("#user-id").on("input", function () {
+                api.field.setValue(this.value)
+              
+                $("#user-notes").val("Existing Description: " + option_descriptions[this.value - 1])
+              	$("#user-image").attr("src", option_images[this.value - 1])
+              	console.log("Setting image to " + option_images[this.value - 1] )
+            })
+        })
+    </script>
+</body>
+
+</html>
